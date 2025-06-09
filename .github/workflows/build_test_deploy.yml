@@ -25,5 +25,7 @@ jobs:
       run: npm run server &
     - name: Start FontEnd
       run: npm run start &
+    - name: Install Browsers
+      run: npx playwright install   
     - name: Start All tests
       run: npm test
