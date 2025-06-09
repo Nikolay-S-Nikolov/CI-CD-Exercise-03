@@ -21,6 +21,8 @@ jobs:
         cache: 'npm'
     - name: Install NPM modules
       run: npm install 
+    - name: Replace host
+      run: echo "export const settings = {host:\"http://localhost:3030\"}" > src/config.js
     - name: Start BackEnd
       run: npm run server &
     - name: Start FontEnd
@@ -31,6 +33,8 @@ jobs:
       run: npm test
 
   deploy_backend:
+
+    needs: build_and_test	
 
     runs-on: ubuntu-latest
 
@@ -45,6 +49,8 @@ jobs:
         wait_deploy: true
 
   deploy_frontend:
+
+    needs: build_and_test	
 
     runs-on: ubuntu-latest
 
