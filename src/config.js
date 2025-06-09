@@ -1,0 +1,1 @@
+export const settings = {host: "https://ci-cd-exercise-03-backend.onrender.com"}

@@ -29,3 +29,31 @@ jobs:
       run: npx playwright install   
     - name: Start All tests
       run: npm test
+
+  deploy_backend:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Derploy BackEnd
+      uses: JorgeLNJunior/render-deploy@v1.4.5
+      with:
+        service_id: ${{ secrets.RENDER_BACKEND_SERVICE_ID }}
+        api_key: ${{ secrets.RENDER_API_KEY }}
+        wait_deploy: true
+
+  deploy_frontend:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Derploy BackEnd
+      uses: JorgeLNJunior/render-deploy@v1.4.5
+      with:
+        service_id: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
+        api_key: ${{ secrets.RENDER_API_KEY }}
+        wait_deploy: true
